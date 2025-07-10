@@ -22,7 +22,7 @@
   .nav {
     justify-content: space-between;
 
-    padding: var(--space-4);
+    padding-inline: clamp(1rem, 5vw, 5rem);
   }
   .preview {
     display: none;
