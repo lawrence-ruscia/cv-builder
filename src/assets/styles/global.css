@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter24pt-Regular.woff'),
+    url('../fonts/Inter24pt-Regular.woff2');
+}
+
+/* Resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Variables */
+:root {
+  /* Colors */
+  --color-brand-primary: #ac1de4;
+  --color-brand-primary-bg: rgba(192, 41, 240, 0.24);
+  --color-background: hsl(0, 0%, 95%);
+  --color-text: var(--color-dark);
+  --color-text-muted: hsl(222, 11%, 36%);
+
+  /* Section */
+  --color-section-bg: hsl(210, 50%, 97%);
+  --color-section-border: hsl(219, 20%, 80%);
+
+  --color-dark: hsl(213, 24%, 7%);
+
+  /* Button */
+  --color-btn-primary: #ac1de4;
+  --color-btn-secondary: var(var(--color-background));
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+}
+
+/* Utilities */
+.primary-btn {
+  background-color: var(--color-btn-primary);
+  color: hsl(0, 0%, 95%);
+}
+
+.secondary-btn {
+  background-color: var(--color-btn-secondary);
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+}
+
+.primary-btn,
+.secondary-btn {
+  font-weight: 600;
+}
+
+.btn-sm {
+  border-radius: 4px;
+}
+
+.btn-md {
+  border-radius: 6px;
+  padding: var(--space-2) var(--space-5);
+}
+
+.btn-lg {
+  border-radius: 10px;
+  padding: var(--space-3) var(--space-5);
+}
+
+/* Body */
+body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  font-size: 1rem;
+}
+
+/* App Layout */
+#app {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#header {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  #app {
+    flex-direction: column;
+  }
+
+  #header {
+    top: 0;
+  }
+}
