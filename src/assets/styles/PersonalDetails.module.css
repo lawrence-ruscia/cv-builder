@@ -1,0 +1,70 @@
+.fullName,
+.jobTitle {
+  margin: 0;
+}
+
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  padding: var(--space-section);
+  border: 1px solid var(--color-section-border);
+  border-radius: var(--radius-section);
+
+  background-color: var(--color-section-bg);
+}
+
+.editIcon {
+  position: absolute;
+  top: var(--space-section);
+  right: var(--space-section);
+
+  padding: var(--space-2);
+  border-radius: 10px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.fullName {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.jobTitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}

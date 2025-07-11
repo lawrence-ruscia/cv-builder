@@ -1,4 +1,3 @@
-import styles from '../assets/styles/Details.module.css';
 import { PersonalDetails } from './PersonalDetails';
 import { EducationDetails } from './EducationDetails';
 import { ProfessionalDetails } from './ProfessionalDetails';

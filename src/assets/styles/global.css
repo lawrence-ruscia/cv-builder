@@ -22,7 +22,7 @@ button {
   /* Colors */
   --color-brand-primary: #ac1de4;
   --color-brand-primary-bg: rgba(192, 41, 240, 0.24);
-  --color-background: hsl(0, 0%, 95%);
+  --color-background: hsl(0, 0%, 100%);
   --color-text: var(--color-dark);
   --color-text-muted: hsl(222, 11%, 36%);
 
@@ -46,6 +46,10 @@ button {
   --space-7: 2rem;
   --space-8: 2.5rem;
   --space-9: 3rem;
+  --space-section: 1.5rem;
+
+  /* Border */
+  --radius-section: 10px;
 }
 
 /* Utilities */
@@ -63,6 +67,14 @@ button {
 .primary-btn,
 .secondary-btn {
   font-weight: 600;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+
+  background-color: hsla(210, 0%, 92%, 0.75);
+  color: var(--color-text-muted);
 }
 
 .btn-sm {
@@ -91,6 +103,10 @@ body {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
+}
+
+#main {
+  padding: clamp(1rem, 2vw, 3rem);
 }
 
 #header {
