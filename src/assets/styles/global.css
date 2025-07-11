@@ -33,8 +33,12 @@ button {
   --color-dark: hsl(213, 24%, 7%);
 
   /* Button */
-  --color-btn-primary: #ac1de4;
-  --color-btn-secondary: var(var(--color-background));
+  --color-btn-primary: hsl(213, 24%, 7%);
+  --color-btn-secondary: hsla(228, 10%, 90%, 0.451);
+  --color-btn-outline: hsl(0, 0%, 100%);
+  --color-hover-btn-primary: hsl(213, 24%, 14%);
+  --color-hover-btn-secondary: hsla(228, 10%, 90%, 0.75);
+  --color-hover-btn-outline: hsl(0, 0%, 95%);
 
   /* Space */
   --space-1: 0.25rem;
@@ -55,17 +59,23 @@ button {
 /* Utilities */
 .primary-btn {
   background-color: var(--color-btn-primary);
-  color: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 100%);
 }
 
 .secondary-btn {
   background-color: var(--color-btn-secondary);
+  color: var(--color-text-muted);
+}
+
+.outline-btn {
+  background-color: var(--color-btn-outline);
   color: var(--color-dark);
   border: 2px solid var(--color-dark);
 }
 
 .primary-btn,
-.secondary-btn {
+.secondary-btn,
+.outline-btn {
   font-weight: 600;
 }
 
@@ -73,7 +83,7 @@ button {
   display: grid;
   place-items: center;
 
-  background-color: hsla(210, 0%, 92%, 0.75);
+  background-color: #e3e4e873;
   color: var(--color-text-muted);
 }
 
@@ -116,10 +126,24 @@ body {
 }
 
 @media (min-width: 768px) {
+  .primary-btn:hover {
+    background-color: var(--color-hover-btn-primary);
+  }
+
+  .secondary-btn:hover {
+    background-color: var(--color-hover-btn-secondary);
+    color: var(--color-dark);
+  }
+
+  .outline-btn:hover {
+    background-color: var(--color-hover-btn-outline);
+  }
+}
+
+@media (min-width: 1024px) {
   #app {
     flex-direction: column;
   }
-
   #header {
     top: 0;
   }

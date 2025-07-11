@@ -19,7 +19,9 @@ export const NavMenu = () => {
       )}
 
       <button
-        className={`secondary-btn btn-lg ${styles.button} ${styles.download}`}
+        className={`${isMobile ? 'outline-btn' : 'primary-btn'} btn-lg ${
+          styles.button
+        } ${styles.download}`}
       >
         <FileDown />
         Download PDF
