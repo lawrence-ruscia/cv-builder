@@ -3,7 +3,7 @@ import { FileSearch, FileDown } from 'lucide-react';
 import { Logo } from './Logo';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 export const NavMenu = () => {
-  const isMobile = useBreakpoint('(max-width: 768px)');
+  const isMobile = useBreakpoint('(max-width: 1024px)');
 
   return (
     <nav className={styles.nav}>
