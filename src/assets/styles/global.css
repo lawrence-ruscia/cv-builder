@@ -17,6 +17,12 @@ button {
   cursor: pointer;
 }
 
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
+  outline: none;
+}
+
 /* Variables */
 :root {
   /* Colors */
@@ -105,7 +111,6 @@ button {
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   background-color: var(--color-background);
-  font-size: 1rem;
 }
 
 /* App Layout */

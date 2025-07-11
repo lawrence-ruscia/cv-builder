@@ -3,18 +3,26 @@
   margin: 0;
 }
 
-.container {
+.personalDetails {
   position: relative;
-
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
 
   padding: var(--space-section);
   border: 1px solid var(--color-section-border);
   border-radius: var(--radius-section);
-
   background-color: var(--color-section-bg);
+}
+
+.open {
+  background-color: var(--color-background);
+}
+
+/* Preview Content */
+.previewContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  
+  cursor: pointer;
 }
 
 .editIcon {
@@ -24,6 +32,10 @@
 
   padding: var(--space-2);
   border-radius: 10px;
+}
+
+.hide {
+  display: none;
 }
 
 .icon {
