@@ -1,19 +1,8 @@
 import styles from '../assets/styles/PersonalDetails.module.css';
 import { Mail, Phone, MapPin, SquarePen } from 'lucide-react';
 import avatar from '../assets/images/avatar-placeholder.svg';
-import { useState } from 'react';
 import { PersonalDetailsForm } from './forms/PersonalDetailsForm';
-export const PersonalDetails = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
+export const PersonalDetails = ({ isOpen, onToggle }) => {
   return (
     <section
       id='personalDetails'
@@ -22,9 +11,9 @@ export const PersonalDetails = () => {
       }`}
     >
       {isOpen ? (
-        <PersonalDetailsForm handleClose={handleClose} />
+        <PersonalDetailsForm handleClose={onToggle} />
       ) : (
-        <PreviewContent isOpen={isOpen} handleOpen={handleOpen} />
+        <PreviewContent isOpen={isOpen} handleOpen={onToggle} />
       )}
     </section>
   );

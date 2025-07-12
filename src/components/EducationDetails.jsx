@@ -3,13 +3,8 @@ import { useState } from 'react';
 import { GraduationCap, ChevronDown } from 'lucide-react';
 import { EducationList } from './EducationList';
 
-export const EducationDetails = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const EducationDetails = ({ isOpen, onToggle }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-
-  const handleToggle = () => {
-    setIsOpen((prev) => !prev);
-  };
 
   const handleIsFormOpen = () => {
     setIsFormOpen(true);
@@ -30,7 +25,7 @@ export const EducationDetails = () => {
         <button
           type='button'
           className={`${styles.preview} ${isOpen && styles.open}`}
-          onClick={handleToggle}
+          onClick={onToggle}
         >
           <span className={styles.title}>
             <GraduationCap />

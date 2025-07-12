@@ -2,6 +2,7 @@ import { NavMenu } from './NavMenu';
 import { Details } from './Details';
 import { Preview } from './Preview';
 function App() {
+  
   return (
     <div id='app'>
       <header id='header'>
