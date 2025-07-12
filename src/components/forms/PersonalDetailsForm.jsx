@@ -3,71 +3,72 @@ import avatar from '../../assets/images/avatar-placeholder.svg';
 import { User, AtSign, Briefcase, Phone, Check } from 'lucide-react';
 export const PersonalDetailsForm = ({ handleClose }) => {
   return (
-    <form className={styles.detailsForm}>
+    <form className='detailsForm'>
       <div className={styles.avatar}>
         <img src={avatar} alt='' />
       </div>
-      <div className={styles.formGroup}>
-        <label htmlFor='fullname' className={styles.label}>
+      <div className='formGroup'>
+        <label htmlFor='fullname' className='formLabel'>
           Full Name
         </label>
         <input
           type='text'
           name='fullName'
           id='fullName'
-          className={styles.input}
+          className='formInput'
           placeholder='John Doe'
         />
       </div>
-      <div className={styles.formGroup}>
-        <label htmlFor='jobTitle' className={`${styles.label} text-caption`}>
+      <div className='formGroup'>
+        <label htmlFor='jobTitle' className={'formLabel text-caption'}>
           Job Title
         </label>
         <input
           type='text'
           id='jobTitle'
-          className={styles.input}
+          className='formInput'
           name='jobTitle'
           placeholder='Software Engineer'
         />
       </div>
 
-      <div className={styles.inlineFormGroup}>
-        <div className={styles.formGroup}>
-          <label htmlFor='mail' className={`${styles.label} text-caption`}>
+      <div className='inlineFormGroup'>
+        <div className='formGroup'>
+          <label htmlFor='mail' className={'formLabel text-caption'}>
             Email
           </label>
           <input
             type='email'
             id='email'
-            className={styles.input}
+            className='formInput'
             name='email'
             placeholder='johndoe@mail.com'
           />
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor='phone' className={`${styles.label} text-caption`}>
+
+        <div className='formGroup'>
+          <label htmlFor='phone' className={'formLabel text-caption'}>
             Phone
           </label>
           <input
             type='tel'
             id='phone'
-            className={styles.input}
+            className='formInput'
             name='phone'
             placeholder='0917 123 4567'
           />
         </div>
       </div>
 
-      <div className={styles.options}>
+      <div className='formOptions'>
         <button
           type='button'
-          className='btn-md outline-btn'
+          className='formOptionsBtn btn-md outline-btn'
           onClick={handleClose}
         >
           Cancel
         </button>
-        <button type='submit' className='btn-md primary-btn'>
+        <button type='submit' className='formOptionsBtn btn-md primary-btn'>
           <Check />
           Save
         </button>

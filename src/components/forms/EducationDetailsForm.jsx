@@ -2,79 +2,80 @@ import styles from '../../assets/styles/forms/EducationDetailsForm.module.css';
 import { Check } from 'lucide-react';
 export const EducationDetailsForm = ({ handleClose }) => {
   return (
-    <form className={styles.detailsForm}>
-      <div className={styles.formGroup}>
-        <label htmlFor='school' className={styles.label}>
+    <form className='detailsForm'>
+      <div className='formGroup'>
+        <label htmlFor='school' className='formLabel'>
           School
         </label>
         <input
           type='text'
           name='school'
           id='school'
-          className={styles.input}
+          className='formInput'
           placeholder='Harvard University'
         />
       </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor='degree' className={styles.label}>
+      <div className='formGroup'>
+        <label htmlFor='school' className='formLabel'>
           Degree
         </label>
         <input
           type='text'
           name='degree'
           id='degree'
-          className={styles.input}
+          className='formInput'
           placeholder='Bachelor of Science in Information Technology'
         />
       </div>
-      <div className={styles.inlineFormGroup}>
-        <div className={styles.formGroup}>
-          <label htmlFor='startDate' className={`${styles.label} text-caption`}>
+
+      <div className='inlineFormGroup'>
+        <div className='formGroup'>
+          <label htmlFor='startDate' className={`formLabel text-caption`}>
             Start Date
           </label>
           <input
             type='date'
-            id='email'
-            className={styles.input}
+            id='startDate'
+            className='formInput'
             name='startDate'
           />
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor='endDate' className={`${styles.label} text-caption`}>
+        <div className='formGroup'>
+          <label htmlFor='endDate' className={`formLabel text-caption`}>
             End Date
           </label>
           <input
             type='date'
             id='endDate'
-            className={styles.input}
+            className='formInput'
             name='endDate'
           />
         </div>
       </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor='location' className={styles.label}>
+      <div className='formGroup'>
+        <label htmlFor='location' className='formLabel'>
           Location
         </label>
         <input
           type='text'
           name='location'
           id='location'
-          className={styles.input}
+          className='formInput'
           placeholder='Cambridge, Massachusettes'
         />
       </div>
 
-      <div className={styles.options}>
+      <div className='formOptions'>
         <button
           type='button'
-          className='btn-md outline-btn'
+          className='formOptionsBtn btn-md outline-btn'
           onClick={handleClose}
         >
           Cancel
         </button>
-        <button type='submit' className='btn-md primary-btn'>
+        <button type='submit' className='formOptionsBtn btn-md primary-btn'>
           <Check />
           Save
         </button>
