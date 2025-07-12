@@ -1,8 +1,28 @@
 import styles from '../../assets/styles/forms/EducationDetailsForm.module.css';
 import { Check } from 'lucide-react';
-export const EducationDetailsForm = ({ handleClose }) => {
+import { useState } from 'react';
+export const EducationDetailsForm = ({ handleClose, handleAddItem }) => {
+  const [formInputs, setFormInputs] = useState({
+    school: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+  });
+
+  const handleInputChange = (e, prop) => {
+    setFormInputs({ ...formInputs, [prop]: e.target.value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    handleAddItem(formInputs);
+    handleClose();
+  };
+
   return (
-    <form className='detailsForm'>
+    <form className='detailsForm' onSubmit={handleFormSubmit}>
       <div className='formGroup'>
         <label htmlFor='school' className='formLabel'>
           School
@@ -13,11 +33,14 @@ export const EducationDetailsForm = ({ handleClose }) => {
           id='school'
           className='formInput'
           placeholder='Harvard University'
+          required
+          value={formInputs.school}
+          onInput={(e) => handleInputChange(e, 'school')}
         />
       </div>
 
       <div className='formGroup'>
-        <label htmlFor='school' className='formLabel'>
+        <label htmlFor='degree' className='formLabel'>
           Degree
         </label>
         <input
@@ -26,6 +49,9 @@ export const EducationDetailsForm = ({ handleClose }) => {
           id='degree'
           className='formInput'
           placeholder='Bachelor of Science in Information Technology'
+          required
+          value={formInputs.degree}
+          onInput={(e) => handleInputChange(e, 'degree')}
         />
       </div>
 
@@ -39,6 +65,9 @@ export const EducationDetailsForm = ({ handleClose }) => {
             id='startDate'
             className='formInput'
             name='startDate'
+            value={formInputs.startDate}
+            required
+            onInput={(e) => handleInputChange(e, 'startDate')}
           />
         </div>
         <div className='formGroup'>
@@ -50,6 +79,8 @@ export const EducationDetailsForm = ({ handleClose }) => {
             id='endDate'
             className='formInput'
             name='endDate'
+            value={formInputs.endDate}
+            onInput={(e) => handleInputChange(e, 'endDate')}
           />
         </div>
       </div>
@@ -64,6 +95,9 @@ export const EducationDetailsForm = ({ handleClose }) => {
           id='location'
           className='formInput'
           placeholder='Cambridge, Massachusettes'
+          required
+          value={formInputs.location}
+          onInput={(e) => handleInputChange(e, 'location')}
         />
       </div>
 
