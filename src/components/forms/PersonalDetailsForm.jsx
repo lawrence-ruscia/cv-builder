@@ -1,9 +1,46 @@
 import styles from '../../assets/styles/forms/PersonalDetailsForm.module.css';
 import avatar from '../../assets/images/avatar-placeholder.svg';
 import { User, AtSign, Briefcase, Phone, Check } from 'lucide-react';
-export const PersonalDetailsForm = ({ handleClose }) => {
+import { useEffect, useState } from 'react';
+export const PersonalDetailsForm = ({
+  handleClose,
+  handleEditInfo,
+  personalInfo,
+}) => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    jobTitle: '',
+    email: '',
+    phone: '',
+    location: '',
+  });
+
+  const handleInputData = (e, inputType) => {
+    setFormData({ ...formData, [inputType]: e.target.value });
+  };
+
+  const handleFormSubmit = (e, data) => {
+    e.preventDefault();
+    console.log(data);
+
+    if (data) {
+      handleEditInfo(data);
+    }
+
+    handleClose();
+  };
+
+  useEffect(() => {
+    if (personalInfo) {
+      setFormData(personalInfo);
+    }
+  }, [personalInfo]);
+
   return (
-    <form className='detailsForm'>
+    <form
+      className='detailsForm'
+      onSubmit={(e) => handleFormSubmit(e, formData)}
+    >
       <div className={styles.avatar}>
         <img src={avatar} alt='' />
       </div>
@@ -17,6 +54,9 @@ export const PersonalDetailsForm = ({ handleClose }) => {
           id='fullName'
           className='formInput'
           placeholder='John Doe'
+          value={formData.fullName}
+          onInput={(e) => handleInputData(e, 'fullName')}
+          required
         />
       </div>
       <div className='formGroup'>
@@ -29,6 +69,8 @@ export const PersonalDetailsForm = ({ handleClose }) => {
           className='formInput'
           name='jobTitle'
           placeholder='Software Engineer'
+          value={formData.jobTitle}
+          onInput={(e) => handleInputData(e, 'jobTitle')}
         />
       </div>
 
@@ -43,6 +85,8 @@ export const PersonalDetailsForm = ({ handleClose }) => {
             className='formInput'
             name='email'
             placeholder='johndoe@mail.com'
+            value={formData.email}
+            onInput={(e) => handleInputData(e, 'email')}
           />
         </div>
 
@@ -56,8 +100,25 @@ export const PersonalDetailsForm = ({ handleClose }) => {
             className='formInput'
             name='phone'
             placeholder='0917 123 4567'
+            value={formData.phone}
+            onInput={(e) => handleInputData(e, 'phone')}
           />
         </div>
+      </div>
+
+      <div className='formGroup'>
+        <label htmlFor='location' className={'formLabel text-caption'}>
+          Location
+        </label>
+        <input
+          type='text'
+          id='location'
+          className='formInput'
+          name='location'
+          placeholder='0917 123 4567'
+          value={formData.location}
+          onInput={(e) => handleInputData(e, 'location')}
+        />
       </div>
 
       <div className='formOptions'>
