@@ -3,13 +3,31 @@ import { Plus } from 'lucide-react';
 import { EducationDetailsForm } from './forms/EducationDetailsForm';
 import { useState } from 'react';
 
+const mockData = [
+  {
+    id: crypto.randomUUID(),
+    school: 'Harvard University',
+    degree: 'Bachelor of Science in Information Technology',
+    startDate: '2020-01-01',
+    endDate: '2022-02-02',
+    location: 'Cambridge, Massachusettes',
+  },
+  {
+    id: crypto.randomUUID(),
+    school: 'University of Helsinki',
+    degree: 'Bachelor of Science in Computer Science',
+    startDate: '2022-03-03',
+    endDate: '2024-02-02',
+    location: 'Helsinki, Finland',
+  },
+];
 export const EducationList = ({
   isOpen,
   isFormOpen,
   handleIsFormOpen,
   handleIsFormClose,
 }) => {
-  const [educationItems, setEducationItems] = useState([]);
+  const [educationItems, setEducationItems] = useState(mockData);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const selectedEducationItem = educationItems.find(
