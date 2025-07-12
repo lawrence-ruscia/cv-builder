@@ -130,6 +130,13 @@ body {
   left: 0;
 }
 
+.details-section {
+  padding: var(--space-section);
+  border: 1px solid var(--color-section-border);
+  border-radius: var(--radius-section);
+  background-color: var(--color-section-bg);
+}
+
 @media (min-width: 768px) {
   .primary-btn:hover {
     background-color: var(--color-hover-btn-primary);

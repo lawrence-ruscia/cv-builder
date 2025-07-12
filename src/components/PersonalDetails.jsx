@@ -17,7 +17,9 @@ export const PersonalDetails = () => {
   return (
     <section
       id='personalDetails'
-      className={`${styles.personalDetails} ${isOpen && styles.open}`}
+      className={`details-section ${styles.personalDetails} ${
+        isOpen && styles.open
+      }`}
     >
       {isOpen ? (
         <PersonalDetailsForm handleClose={handleClose} />
