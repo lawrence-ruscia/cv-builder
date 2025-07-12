@@ -1,7 +1,12 @@
 import styles from '../../assets/styles/forms/EducationDetailsForm.module.css';
 import { Check } from 'lucide-react';
-import { useState } from 'react';
-export const EducationDetailsForm = ({ handleClose, handleAddItem }) => {
+import { useEffect, useState } from 'react';
+export const EducationDetailsForm = ({
+  handleClose,
+  handleAddItem,
+  handleEditItem,
+  selectedEducationItem,
+}) => {
   const [formInputs, setFormInputs] = useState({
     school: '',
     degree: '',
@@ -10,19 +15,36 @@ export const EducationDetailsForm = ({ handleClose, handleAddItem }) => {
     location: '',
   });
 
+  useEffect(() => {
+    if (selectedEducationItem) {
+      setFormInputs(selectedEducationItem);
+    }
+  }, [selectedEducationItem]);
+
   const handleInputChange = (e, prop) => {
     setFormInputs({ ...formInputs, [prop]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e, selectedEducationItem) => {
     e.preventDefault();
 
-    handleAddItem(formInputs);
+    if (selectedEducationItem) {
+      const id = selectedEducationItem.id;
+      handleEditItem({ id, ...formInputs });
+      console.log('Modified Item');
+    } else {
+      handleAddItem(formInputs);
+      console.log('Added Item');
+    }
+
     handleClose();
   };
 
   return (
-    <form className='detailsForm' onSubmit={handleFormSubmit}>
+    <form
+      className='detailsForm'
+      onSubmit={(e) => handleFormSubmit(e, selectedEducationItem)}
+    >
       <div className='formGroup'>
         <label htmlFor='school' className='formLabel'>
           School

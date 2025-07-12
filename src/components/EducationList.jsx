@@ -3,21 +3,6 @@ import { Plus } from 'lucide-react';
 import { EducationDetailsForm } from './forms/EducationDetailsForm';
 import { useState } from 'react';
 
-const mockData = [
-  {
-    school: 'Harvard University',
-    degree: 'Bachelor of Science in Information Technology',
-  },
-  {
-    school: 'Massacheusetts Institute of Technology',
-    degree: 'Masters of Science in Information Technology',
-  },
-  {
-    school: 'University of Helsinki',
-    degree: 'Bachelor of Science in Computer Science',
-  },
-];
-
 export const EducationList = ({
   isOpen,
   isFormOpen,
@@ -25,6 +10,11 @@ export const EducationList = ({
   handleIsFormClose,
 }) => {
   const [educationItems, setEducationItems] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+
+  const selectedEducationItem = educationItems.find(
+    (item) => item.id === selectedItemId
+  );
 
   const handleAddItem = ({ school, degree, startDate, endDate, location }) => {
     setEducationItems([
@@ -40,12 +30,43 @@ export const EducationList = ({
     ]);
   };
 
+  const handleEditItem = ({
+    id,
+    school,
+    degree,
+    startDate,
+    endDate,
+    location,
+  }) => {
+    const item = educationItems.find((item) => item.id === id);
+
+    if (item) {
+      setEducationItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id
+            ? { ...item, school, degree, startDate, endDate, location }
+            : item
+        )
+      );
+    }
+  };
+
+  const handleSelectedId = (id) => {
+    setSelectedItemId(id);
+    handleIsFormOpen(true);
+  };
+
   return (
     <>
       {isFormOpen ? (
         <EducationDetailsForm
-          handleClose={handleIsFormClose}
+          handleClose={() => {
+            handleIsFormClose();
+            setSelectedItemId(null);
+          }}
           handleAddItem={handleAddItem}
+          handleEditItem={handleEditItem}
+          selectedEducationItem={selectedEducationItem}
         />
       ) : (
         <ul
@@ -54,7 +75,11 @@ export const EducationList = ({
           }`}
         >
           {educationItems.map((item) => (
-            <EducationItem key={item.id} {...item} />
+            <EducationItem
+              key={item.id}
+              {...item}
+              handleSelectedId={() => handleSelectedId(item.id)}
+            />
           ))}
           <div className={styles.add}>
             <button
@@ -72,9 +97,9 @@ export const EducationList = ({
   );
 };
 
-const EducationItem = ({ school, degree }) => {
+const EducationItem = ({ school, degree, handleSelectedId }) => {
   return (
-    <li className={styles.listItem}>
+    <li className={styles.listItem} onClick={handleSelectedId}>
       <button className={styles.listBtn}>
         <span className={styles.school}>{school}</span>
         {', '}
