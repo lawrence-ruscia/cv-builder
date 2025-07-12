@@ -13,6 +13,8 @@
 
 /* Preview Content */
 .previewContent {
+  padding: var(--space-section);
+
   display: flex;
   flex-direction: column;
   gap: var(--space-6);

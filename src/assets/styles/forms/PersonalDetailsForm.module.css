@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.detailsForm {
+  padding: var(--space-section);
+}
+
 .detailsForm,
 .inlineFormGroup {
   display: flex;

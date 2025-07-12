@@ -1,0 +1,45 @@
+.educationDetails {
+  overflow: hidden;
+}
+
+.preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--space-section);
+  width: 100%;
+
+  background-color: inherit;
+}
+
+.open {
+  background-color: #fff;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.title svg {
+  width: 28px;
+  height: 28px;
+}
+
+.title p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.icon {
+  transition: transform 0.4s ease;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+
