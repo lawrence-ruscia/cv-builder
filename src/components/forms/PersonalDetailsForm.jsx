@@ -2,6 +2,7 @@ import styles from '../../assets/styles/forms/PersonalDetailsForm.module.css';
 import avatar from '../../assets/images/avatar-placeholder.svg';
 import { User, AtSign, Briefcase, Phone, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
 export const PersonalDetailsForm = ({
   handleClose,
   handleEditInfo,
@@ -115,7 +116,7 @@ export const PersonalDetailsForm = ({
           id='location'
           className='formInput'
           name='location'
-          placeholder='0917 123 4567'
+          placeholder='Metro Manila, Philippines'
           value={formData.location}
           onInput={(e) => handleInputData(e, 'location')}
         />
