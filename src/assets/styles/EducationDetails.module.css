@@ -28,10 +28,16 @@
   height: 28px;
 }
 
-.title p {
+.title p,
+.formTitle {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.formTitle {
+  background-color: #fff;
+  padding: var(--space-section);
 }
 
 .icon {
@@ -41,5 +47,3 @@
 .arrowUp {
   transform: rotate(180deg);
 }
-
-

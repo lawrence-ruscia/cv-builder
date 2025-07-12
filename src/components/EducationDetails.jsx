@@ -4,10 +4,19 @@ import { GraduationCap, ChevronDown } from 'lucide-react';
 import { EducationList } from './EducationList';
 
 export const EducationDetails = () => {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleIsFormOpen = () => {
+    setIsFormOpen(true);
+  };
+
+  const handleIsFormClose = () => {
+    setIsFormOpen(false);
   };
 
   return (
@@ -15,19 +24,31 @@ export const EducationDetails = () => {
       id='educationDetails'
       className={`details-section ${styles.educationDetails} `}
     >
-      <button
-        type='button'
-        className={`${styles.preview} ${isOpen && styles.open}`}
-        onClick={handleToggle}
-      >
-        <span className={styles.title}>
-          <GraduationCap />
-          <p>Education</p>
-        </span>
+      {isFormOpen ? (
+        <p className={styles.formTitle}>Education Details</p>
+      ) : (
+        <button
+          type='button'
+          className={`${styles.preview} ${isOpen && styles.open}`}
+          onClick={handleToggle}
+        >
+          <span className={styles.title}>
+            <GraduationCap />
+            <p>Education</p>
+          </span>
 
-        <ChevronDown className={`${isOpen && styles.arrowUp} ${styles.icon}`} />
-      </button>
-      <EducationList isOpen={isOpen} />
+          <ChevronDown
+            className={`${isOpen && styles.arrowUp} ${styles.icon}`}
+          />
+        </button>
+      )}
+
+      <EducationList
+        isOpen={isOpen}
+        isFormOpen={isFormOpen}
+        handleIsFormOpen={handleIsFormOpen}
+        handleIsFormClose={handleIsFormClose}
+      />
     </section>
   );
 };

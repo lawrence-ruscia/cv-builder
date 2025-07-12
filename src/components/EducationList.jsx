@@ -1,6 +1,13 @@
 import styles from '../assets/styles/EducationList.module.css';
 import { Plus } from 'lucide-react';
-export const EducationList = ({ isOpen }) => {
+import { EducationDetailsForm } from './forms/EducationDetailsForm';
+export const EducationList = ({
+  isOpen,
+  isFormOpen,
+  handleIsFormOpen,
+  handleIsFormClose,
+}) => {
+  const handleAddItem = () => {};
   const mockData = [
     {
       school: 'Harvard University',
@@ -16,19 +23,31 @@ export const EducationList = ({ isOpen }) => {
     },
   ];
   return (
-    <ul
-      className={`${styles.educationList} ${isOpen ? styles.openList : null}`}
-    >
-      <EducationItem education={mockData[0]} />
-      <EducationItem education={mockData[1]} />
-      <EducationItem education={mockData[2]} />
-      <div className={styles.add}>
-        <button type='button' className={`primary-btn btn-md ${styles.addBtn}`}>
-          <Plus />
-          Add Education
-        </button>
-      </div>
-    </ul>
+    <>
+      {isFormOpen ? (
+        <EducationDetailsForm handleClose={handleIsFormClose} />
+      ) : (
+        <ul
+          className={`${styles.educationList} ${
+            isOpen ? styles.openList : null
+          }`}
+        >
+          <EducationItem education={mockData[0]} />
+          <EducationItem education={mockData[1]} />
+          <EducationItem education={mockData[2]} />
+          <div className={styles.add}>
+            <button
+              type='button'
+              className={`primary-btn btn-md ${styles.addBtn}`}
+              onClick={handleIsFormOpen}
+            >
+              <Plus />
+              Add Education
+            </button>
+          </div>
+        </ul>
+      )}
+    </>
   );
 };
 
