@@ -5,6 +5,7 @@
 
 .personalDetails {
   position: relative;
+  overflow: hidden;
 }
 
 .open {
