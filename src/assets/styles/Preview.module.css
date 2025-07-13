@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'SourceSerif4';
+  src: url('../fonts/SourceSerif4-Regular.woff'),
+    ('../fonts/SourceSerif4-Regular.woff2');
+}
+
+.preview {
+  font-family: 'SourceSerif4', sans-serif;
+}

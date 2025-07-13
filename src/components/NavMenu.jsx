@@ -1,8 +1,8 @@
 import styles from '../assets/styles/NavMenu.module.css';
-import { FileSearch, FileDown } from 'lucide-react';
+import { Type, FileSearch, FileDown } from 'lucide-react';
 import { Logo } from './Logo';
 import { useBreakpoint } from '../hooks/useBreakpoint';
-export const NavMenu = () => {
+export const NavMenu = ({ isPreview, handleTogglePreview }) => {
   const isMobile = useBreakpoint('(max-width: 1024px)');
 
   return (
@@ -10,9 +10,17 @@ export const NavMenu = () => {
       {isMobile ? (
         <button
           className={`primary-btn btn-lg ${styles.button} ${styles.preview}`}
+          onClick={handleTogglePreview}
         >
-          <FileSearch />
-          Preview
+          {isPreview ? (
+            <>
+              <Type /> Edit Details
+            </>
+          ) : (
+            <>
+              <FileSearch /> Preview
+            </>
+          )}
         </button>
       ) : (
         <Logo />
