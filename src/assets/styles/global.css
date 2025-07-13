@@ -118,13 +118,18 @@ body {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 #main {
+  z-index: 9;
+  flex-grow: 1;
   padding: clamp(1rem, 2vw, 3rem);
 }
 
 #header {
+  z-index: 10;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -211,6 +216,7 @@ body {
 @media (min-width: 1024px) {
   #app {
     flex-direction: column;
+    justify-content: start;
   }
   #header {
     top: 0;
