@@ -10,6 +10,7 @@ const personalMockData = {
   phone: '0917 123 4567',
   location: 'Metro Manila, Philippines',
 };
+
 function App() {
   const [isPreview, setIsPreview] = useState(false);
   const [personalDetails, setPersonalDetails] = useState(personalMockData);

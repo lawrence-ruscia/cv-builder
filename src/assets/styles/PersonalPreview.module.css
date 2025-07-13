@@ -1,0 +1,14 @@
+.personal p {
+  margin: 0;
+}
+
+.personal ul {
+  padding: 0;
+}
+
+.personal li {
+  list-style-type: none;
+}
+
+.fullName {
+}
