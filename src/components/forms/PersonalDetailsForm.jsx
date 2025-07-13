@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 
 export const PersonalDetailsForm = ({
   handleClose,
-  handleEditInfo,
-  personalInfo,
+  handlePersonalDetails,
+  personalDetails,
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -22,25 +22,25 @@ export const PersonalDetailsForm = ({
 
   const handleFormSubmit = (e, data) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(`Submited Data: ${JSON.stringify(data)}`);
 
     if (data) {
-      handleEditInfo(data);
+      handlePersonalDetails(data);
     }
 
     handleClose();
   };
 
   useEffect(() => {
-    if (personalInfo) {
-      setFormData(personalInfo);
+    if (personalDetails) {
+      setFormData(personalDetails);
     }
-  }, [personalInfo]);
+  }, [personalDetails]);
 
   return (
     <form
       className='detailsForm'
-      onSubmit={(e) => handleFormSubmit(e, formData)}
+      onSubmit={(e) => handleFormSubmit(e, { ...formData })}
     >
       <div className={styles.avatar}>
         <img src={avatar} alt='' />

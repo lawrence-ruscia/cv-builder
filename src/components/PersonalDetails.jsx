@@ -3,21 +3,13 @@ import { Mail, Phone, MapPin, SquarePen, PenSquare } from 'lucide-react';
 import avatar from '../assets/images/avatar-placeholder.svg';
 import { PersonalDetailsForm } from './forms/PersonalDetailsForm';
 import { useState } from 'react';
-const mockData = {
-  fullName: 'John Doe',
-  jobTitle: 'Software Engineer',
-  email: 'johndoe@gmail.com',
-  phone: '0917 123 4567',
-  location: 'Metro Manila, Philippines',
-};
 
-export const PersonalDetails = ({ isOpen, onToggle }) => {
-  const [personalInfo, setPersonalInfo] = useState(mockData);
-
-  const handleEditInfo = (data) => {
-    setPersonalInfo(data);
-  };
-
+export const PersonalDetails = ({
+  isOpen,
+  onToggle,
+  personalDetails,
+  handlePersonalDetails,
+}) => {
   return (
     <section
       id='personalDetails'
@@ -28,14 +20,14 @@ export const PersonalDetails = ({ isOpen, onToggle }) => {
       {isOpen ? (
         <PersonalDetailsForm
           handleClose={onToggle}
-          handleEditInfo={handleEditInfo}
-          personalInfo={personalInfo}
+          handlePersonalDetails={handlePersonalDetails}
+          personalDetails={personalDetails}
         />
       ) : (
         <PreviewContent
           isOpen={isOpen}
           handleOpen={onToggle}
-          personalInfo={personalInfo}
+          personalInfo={personalDetails}
         />
       )}
     </section>
@@ -43,11 +35,13 @@ export const PersonalDetails = ({ isOpen, onToggle }) => {
 };
 
 const PreviewContent = ({ isOpen, handleOpen, personalInfo }) => {
-  const fullName = personalInfo.fullName;
-  const jobTitle = personalInfo.jobTitle;
-  const email = personalInfo.email;
-  const phone = personalInfo.phone;
-  const location = personalInfo.location;
+  const { fullName, jobTitle, email, phone, location } = personalInfo ?? {
+    fullName: 'John Doe',
+    jobTitle: 'Software Engineer',
+    email: 'johndoe@gmail.com',
+    phone: '0917 123 4567',
+    location: 'Metro Manila, Philippines',
+  };
 
   return (
     <div className={styles.previewContent} onClick={handleOpen}>
