@@ -86,22 +86,23 @@ input[type='tel'] {
   border: 2px solid var(--color-dark);
 }
 
-.primary-btn,
-.secondary-btn,
-.outline-btn,
-.delete-btn {
-  font-weight: 600;
-}
-
 .delete-btn {
   color: hsl(355, 74%, 53%);
   background-color: inherit;
   transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
 
-.delete-btn:hover {
-  color: hsl(0, 0%, 95%);
-  background-color: hsl(355, 74%, 53%);
+.clear-btn {
+  background-color: inherit;
+  color: var(--color-dark);
+}
+
+.primary-btn,
+.secondary-btn,
+.outline-btn,
+.delete-btn,
+.clear-btn {
+  font-weight: 600;
 }
 
 .icon-btn {
@@ -248,6 +249,15 @@ body {
 
   .outline-btn:hover {
     background-color: var(--color-hover-btn-outline);
+  }
+
+  .delete-btn:hover {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(355, 74%, 53%);
+  }
+
+  .clear-btn:hover {
+    color: hsl(355, 74%, 53%);
   }
 }
 

@@ -1,6 +1,6 @@
 import styles from '../../assets/styles/forms/PersonalDetailsForm.module.css';
 import avatar from '../../assets/images/avatar-placeholder.svg';
-import { User, AtSign, Briefcase, Phone, Check } from 'lucide-react';
+import { Eraser, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export const PersonalDetailsForm = ({
@@ -29,6 +29,16 @@ export const PersonalDetailsForm = ({
     }
 
     handleClose();
+  };
+
+  const handleFormReset = () => {
+    setFormData({
+      fullName: '',
+      jobTitle: '',
+      email: '',
+      phone: '',
+      location: '',
+    });
   };
 
   useEffect(() => {
@@ -125,15 +135,25 @@ export const PersonalDetailsForm = ({
       <div className='formOptions'>
         <button
           type='button'
-          className='formOptionsBtn btn-md outline-btn'
-          onClick={handleClose}
+          className='formOptionsBtn btn-md clear-btn'
+          onClick={handleFormReset}
         >
-          Cancel
+          <Eraser />
+          Clear Form
         </button>
-        <button type='submit' className='formOptionsBtn btn-md primary-btn'>
-          <Check />
-          Save
-        </button>
+        <div className='formOptionsInline'>
+          <button
+            type='button'
+            className='formOptionsBtn btn-md outline-btn'
+            onClick={handleClose}
+          >
+            Cancel
+          </button>
+          <button type='submit' className='formOptionsBtn btn-md primary-btn'>
+            <Check />
+            Save
+          </button>
+        </div>
       </div>
     </form>
   );
