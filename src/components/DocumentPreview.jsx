@@ -16,13 +16,13 @@ Font.register({ family: 'Times-Roman' });
 const styles = StyleSheet.create({
   document: {
     fontFamily: 'Times-Roman',
-
     marginInline: 'auto',
   },
   page: {
     padding: 48,
     flexDirection: 'column',
     alignItems: 'center',
+    gap: 36,
   },
   fullName: {
     textAlign: 'center',
@@ -52,9 +52,48 @@ const styles = StyleSheet.create({
     gap: 6,
     fontSize: 14,
   },
+
+  educationSection: {
+    width: '100%',
+    flexDirection: 'column',
+    gap: 14,
+  },
+  sectionTitle: {
+    fontSize: 15,
+    fontWeight: 600,
+    borderBottom: '2 solid #0000',
+    paddingBottom: 4,
+  },
+  educationList: {
+    flexDirection: 'column',
+    gap: 20,
+  },
+  educationItem: {
+    flexDirection: 'column',
+    gap: 6,
+    fontSize: 14,
+  },
+  school: {
+    fontWeight: 600,
+  },
+  degree: {
+    fontStyle: 'italic',
+  },
+  dateLoc: {
+    flexDirection: 'rpw',
+  },
 });
-export const DocumentPreview = ({ personalDetails }) => {
+export const DocumentPreview = ({ personalDetails, educationItems }) => {
   const { fullName, jobTitle, email, phone, location } = personalDetails;
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    return `${String(date.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}/${date.getFullYear()}`; // format: MM/YYYY
+  };
 
   return (
     <Document style={styles.document}>
@@ -83,9 +122,46 @@ export const DocumentPreview = ({ personalDetails }) => {
                 <Text>{location}</Text>
               </View>
             )}
-            <Text></Text>
           </View>
         </View>
+        <>
+          {educationItems && (
+            <View style={styles.educationSection}>
+              <Text style={styles.sectionTitle}>EDUCATION</Text>
+              <View style={styles.educationList}>
+                {educationItems.map((item) => (
+                  <View key={item.id} style={styles.educationItem}>
+                    {item.school && (
+                      <Text style={styles.school}>{item.school},</Text>
+                    )}
+                    {item.degree && (
+                      <Text style={styles.degree}>{item.degree}</Text>
+                    )}
+                    {item.startDate && item.location ? (
+                      <View style={styles.dateLoc}>
+                        <Text style>
+                          {formatDate(item.startDate)}
+                          {item.endDate && ` - ${formatDate(item.endDate)}`}
+                          {item.location && <Text> | {item.location}</Text>}
+                        </Text>
+                      </View>
+                    ) : (
+                      <>
+                        {item.startDate && (
+                          <Text style>
+                            {formatDate(item.startDate)}
+                            {item.endDate && ` - ${formatDate(item.endDate)}`}
+                          </Text>
+                        )}
+                        {item.location && <Text> | {item.location}</Text>}
+                      </>
+                    )}
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
+        </>
       </Page>
     </Document>
   );

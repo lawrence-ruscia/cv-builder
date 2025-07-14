@@ -7,7 +7,7 @@ export const DocumentPreviewWrapper = ({ pdfBlobUrl }) => {
       ref={containerRef}
       style={{
         width: '100%',
-        border: '1px solid #ccc',
+        border: '1px solid #c2c9d6',
         marginInline: 'auto',
       }}
     >

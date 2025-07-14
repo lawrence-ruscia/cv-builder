@@ -46,14 +46,17 @@ function App() {
   useEffect(() => {
     const generatePdfBlob = async () => {
       const blob = await pdf(
-        <DocumentPreview personalDetails={personalDetails} />
+        <DocumentPreview
+          personalDetails={personalDetails}
+          educationItems={educationItems}
+        />
       ).toBlob();
       const url = URL.createObjectURL(blob);
       setPdfBlobUrl(url);
     };
 
     generatePdfBlob();
-  }, [personalDetails]);
+  }, [personalDetails, educationItems]);
 
   const isDesktop = useBreakpoint('(min-width: 1024px)');
 
