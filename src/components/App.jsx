@@ -1,7 +1,14 @@
 import { NavMenu } from './NavMenu';
 import { Details } from './Details';
 import { Preview } from './Preview';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { DocumentPreview } from './DocumentPreview';
+import { useBreakpoint } from '../hooks/useBreakpoint';
+import { pdfjs } from 'react-pdf';
+import { pdf } from '@react-pdf/renderer';
+import { DocumentPreviewWrapper } from './DocumentPreviewWrapper';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const personalMockData = {
   fullName: 'John Doe',
@@ -34,6 +41,21 @@ function App() {
   const [isPreview, setIsPreview] = useState(false);
   const [personalDetails, setPersonalDetails] = useState(personalMockData);
   const [educationItems, setEducationItems] = useState(educationMockData);
+  const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
+
+  useEffect(() => {
+    const generatePdfBlob = async () => {
+      const blob = await pdf(
+        <DocumentPreview personalDetails={personalDetails} />
+      ).toBlob();
+      const url = URL.createObjectURL(blob);
+      setPdfBlobUrl(url);
+    };
+
+    generatePdfBlob();
+  }, [personalDetails]);
+
+  const isDesktop = useBreakpoint('(min-width: 1024px)');
 
   const handleTogglePreview = () => {
     setIsPreview((prev) => !prev);
@@ -53,18 +75,29 @@ function App() {
         />
       </header>
       <main id='main'>
-        {isPreview ? (
-          <Preview
-            personalDetails={personalDetails}
-            educationItems={educationItems}
-          />
+        {isDesktop ? (
+          <>
+            <Details
+              personalDetails={personalDetails}
+              handlePersonalDetails={handlePersonalDetails}
+              educationItems={educationItems}
+              setEducationItems={setEducationItems}
+            />
+            <DocumentPreviewWrapper pdfBlobUrl={pdfBlobUrl} />
+          </>
         ) : (
-          <Details
-            personalDetails={personalDetails}
-            handlePersonalDetails={handlePersonalDetails}
-            educationItems={educationItems}
-            setEducationItems={setEducationItems}
-          />
+          <>
+            {isPreview ? (
+              <DocumentPreviewWrapper pdfBlobUrl={pdfBlobUrl} />
+            ) : (
+              <Details
+                personalDetails={personalDetails}
+                handlePersonalDetails={handlePersonalDetails}
+                educationItems={educationItems}
+                setEducationItems={setEducationItems}
+              />
+            )}
+          </>
         )}
       </main>
     </div>
