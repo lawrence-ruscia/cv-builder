@@ -62,6 +62,7 @@ function App() {
         <DocumentPreview
           personalDetails={personalDetails}
           educationItems={educationItems}
+          experienceItems={experienceItems}
         />
       ).toBlob();
       const url = URL.createObjectURL(blob);
@@ -69,7 +70,7 @@ function App() {
     };
 
     generatePdfBlob();
-  }, [personalDetails, educationItems]);
+  }, [personalDetails, educationItems, experienceItems]);
 
   const isDesktop = useBreakpoint('(min-width: 1024px)');
 

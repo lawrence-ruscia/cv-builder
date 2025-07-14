@@ -53,48 +53,62 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 
-  educationSection: {
+  detailsSection: {
     width: '100%',
     flexDirection: 'column',
     gap: 14,
   },
+
   sectionTitle: {
-    maxWidth: '50%',
     fontSize: 15,
     fontWeight: 600,
     borderBottom: '2 solid #0000',
     paddingBottom: 4,
   },
-  educationList: {
+  sectionHalf: {
+    maxWidth: '50%',
+  },
+  sectionList: {
     flexDirection: 'column',
     gap: 20,
   },
-  educationItem: {
+  sectionItem: {
     flexDirection: 'column',
     gap: 6,
     fontSize: 14,
   },
-  school: {
+  sectionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  textBold: {
     fontWeight: 600,
   },
-  degree: {
+  textItalic: {
     fontStyle: 'italic',
   },
   dateLoc: {
-    flexDirection: 'rpw',
+    flexDirection: 'row',
+  },
+  inlineCategory: {
+    flexDirection: 'row',
   },
 });
-export const DocumentPreview = ({ personalDetails, educationItems }) => {
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+
+  return `${String(date.getMonth() + 1).padStart(
+    2,
+    '0'
+  )}/${date.getFullYear()}`; // format: MM/YYYY
+};
+export const DocumentPreview = ({
+  personalDetails,
+  educationItems,
+  experienceItems,
+}) => {
   const { fullName, jobTitle, email, phone, location } = personalDetails;
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-
-    return `${String(date.getMonth() + 1).padStart(
-      2,
-      '0'
-    )}/${date.getFullYear()}`; // format: MM/YYYY
-  };
 
   return (
     <Document style={styles.document}>
@@ -125,45 +139,106 @@ export const DocumentPreview = ({ personalDetails, educationItems }) => {
             )}
           </View>
         </View>
-        <>
-          {educationItems && (
-            <View style={styles.educationSection}>
-              <Text style={styles.sectionTitle}>EDUCATION</Text>
-              <View style={styles.educationList}>
-                {educationItems.map((item) => (
-                  <View key={item.id} style={styles.educationItem}>
-                    {item.school && (
-                      <Text style={styles.school}>{item.school},</Text>
-                    )}
-                    {item.degree && (
-                      <Text style={styles.degree}>{item.degree}</Text>
-                    )}
-                    {item.startDate && item.location ? (
-                      <View style={styles.dateLoc}>
-                        <Text style>
-                          {formatDate(item.startDate)}
-                          {item.endDate && ` - ${formatDate(item.endDate)}`}
-                          {item.location && <Text> | {item.location}</Text>}
-                        </Text>
-                      </View>
-                    ) : (
-                      <>
-                        {item.startDate && (
-                          <Text style>
-                            {formatDate(item.startDate)}
-                            {item.endDate && ` - ${formatDate(item.endDate)}`}
-                          </Text>
-                        )}
-                        {item.location && <Text> | {item.location}</Text>}
-                      </>
-                    )}
-                  </View>
-                ))}
-              </View>
-            </View>
-          )}
-        </>
+        <EducationSection educationItems={educationItems} />
+        <ExperienceSection experienceItems={experienceItems} />
       </Page>
     </Document>
+  );
+};
+
+const EducationSection = ({ educationItems }) => {
+  return (
+    <>
+      {educationItems && (
+        <View style={styles.detailsSection}>
+          <Text style={[styles.sectionTitle, styles.sectionHalf]}>
+            EDUCATION
+          </Text>
+          <View style={styles.sectionList}>
+            {educationItems.map((item) => (
+              <View key={item.id} style={styles.sectionItem}>
+                {item.school && (
+                  <Text style={styles.textBold}>{item.school},</Text>
+                )}
+                {item.degree && (
+                  <Text style={styles.textItalic}>{item.degree}</Text>
+                )}
+                {item.startDate && item.location ? (
+                  <View style={styles.dateLoc}>
+                    <Text style>
+                      {formatDate(item.startDate)}
+                      {item.endDate && ` - ${formatDate(item.endDate)}`}
+                      {item.location && <Text> | {item.location}</Text>}
+                    </Text>
+                  </View>
+                ) : (
+                  <>
+                    {item.startDate && (
+                      <Text style>
+                        {formatDate(item.startDate)}
+                        {item.endDate && ` - ${formatDate(item.endDate)}`}
+                      </Text>
+                    )}
+                    {item.location && <Text> | {item.location}</Text>}
+                  </>
+                )}
+              </View>
+            ))}
+          </View>
+        </View>
+      )}
+    </>
+  );
+};
+
+const ExperienceSection = ({ experienceItems }) => {
+  return (
+    <>
+      {experienceItems && (
+        <View style={styles.detailsSection}>
+          <Text style={styles.sectionTitle}>PROFESSIONAL EXPERIENCE</Text>
+          <View style={styles.sectionList}>
+            {experienceItems.map((item) => (
+              <View key={item.id} style={styles.sectionItem}>
+                <View style={styles.sectionRow}>
+                  <View style={styles.inlineCategory}>
+                    {item.employer && (
+                      <Text style={styles.textBold}>
+                        {item.employer}
+                        {', '}
+                      </Text>
+                    )}
+                    {item.jobTitle && (
+                      <Text style={styles.textItalic}>{item.jobTitle}</Text>
+                    )}
+                  </View>
+                  {item.startDate && item.location ? (
+                    <View style={styles.dateLoc}>
+                      <Text>
+                        {formatDate(item.startDate)}
+                        {item.endDate && ` - ${formatDate(item.endDate)}`}
+                        {item.location && <Text> | {item.location}</Text>}
+                      </Text>
+                    </View>
+                  ) : (
+                    <>
+                      {item.startDate && (
+                        <Text>
+                          {formatDate(item.startDate)}
+                          {item.endDate && ` - ${formatDate(item.endDate)}`}
+                        </Text>
+                      )}
+                      {item.location && <Text> | {item.location}</Text>}
+                    </>
+                  )}
+                </View>
+
+                {item.description && <Text>{item.description}</Text>}
+              </View>
+            ))}
+          </View>
+        </View>
+      )}
+    </>
   );
 };

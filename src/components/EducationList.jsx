@@ -67,7 +67,7 @@ export const EducationList = ({
           }}
           handleAddItem={handleAddItem}
           handleEditItem={handleEditItem}
-          selectedExperienceItem={selectedEducationItem}
+          selectedEducationItem={selectedEducationItem}
         />
       ) : (
         <ul
