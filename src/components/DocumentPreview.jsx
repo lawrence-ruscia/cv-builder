@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   sectionTitle: {
+    maxWidth: '50%',
     fontSize: 15,
     fontWeight: 600,
     borderBottom: '2 solid #0000',
