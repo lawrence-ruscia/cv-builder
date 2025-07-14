@@ -62,8 +62,9 @@ input[type='tel'] {
   --radius-section: 10px;
 
   /* Font Size */
+  --font-size-title-sm: clamp(0.7rem, 1.25vw, 1.25rem);
+  --font-size-title-md: clamp(0.8rem, 1.3vw, 1.3rem);
   --font-size-title-lg: clamp(1.25rem, 1.95vw, 2rem);
-  --font-size-title-sm: clamp(0.75rem, 1.25vw, 1.25rem);
   --font-size-base: clamp(0.5rem, 1vw, 1.125rem);
   --space-gap-sm: clamp(0.4rem, 0.9vw, 1rem);
 }

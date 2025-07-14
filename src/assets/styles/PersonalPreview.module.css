@@ -11,10 +11,11 @@
 }
 
 .personal {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding-inline: clamp(1rem, 2.5vw, 4rem);
 }
 
 .fullName {
@@ -23,7 +24,7 @@
 }
 
 .jobTitle {
-  font-size: var(--font-size-title-sm);
+  font-size: var(--font-size-title-md);
   font-style: italic;
 }
 
@@ -43,5 +44,5 @@
 .infoList li {
   display: flex;
   align-items: center;
-  gap: var(--space-gap-sm);
+  gap: 4px;
 }

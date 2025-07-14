@@ -3,7 +3,12 @@ import { EducationDetails } from './EducationDetails';
 import { ProfessionalDetails } from './ProfessionalDetails';
 import styles from '../assets/styles/Details.module.css';
 import { useState } from 'react';
-export const Details = ({ personalDetails, handlePersonalDetails }) => {
+export const Details = ({
+  personalDetails,
+  handlePersonalDetails,
+  educationItems,
+  setEducationItems,
+}) => {
   const [focusedIndex, setFocusedIndex] = useState(null);
 
   const handleSelectedFocus = (index) => {
@@ -21,6 +26,8 @@ export const Details = ({ personalDetails, handlePersonalDetails }) => {
       <EducationDetails
         isOpen={focusedIndex === 1}
         onToggle={() => handleSelectedFocus(1)}
+        educationItems={educationItems}
+        setEducationItems={setEducationItems}
       />
 
       <ProfessionalDetails

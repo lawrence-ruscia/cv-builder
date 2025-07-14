@@ -3,7 +3,12 @@ import { useState } from 'react';
 import { GraduationCap, ChevronDown } from 'lucide-react';
 import { EducationList } from './EducationList';
 
-export const EducationDetails = ({ isOpen, onToggle }) => {
+export const EducationDetails = ({
+  isOpen,
+  onToggle,
+  educationItems,
+  setEducationItems,
+}) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleIsFormOpen = () => {
@@ -43,6 +48,8 @@ export const EducationDetails = ({ isOpen, onToggle }) => {
         isFormOpen={isFormOpen}
         handleIsFormOpen={handleIsFormOpen}
         handleIsFormClose={handleIsFormClose}
+        educationItems={educationItems}
+        setEducationItems={setEducationItems}
       />
     </section>
   );
