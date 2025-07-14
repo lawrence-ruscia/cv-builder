@@ -149,7 +149,7 @@ export const DocumentPreview = ({
 const EducationSection = ({ educationItems }) => {
   return (
     <>
-      {educationItems && (
+      {educationItems.length > 0 && (
         <View style={styles.detailsSection}>
           <Text style={[styles.sectionTitle, styles.sectionHalf]}>
             EDUCATION
@@ -194,7 +194,7 @@ const EducationSection = ({ educationItems }) => {
 const ExperienceSection = ({ experienceItems }) => {
   return (
     <>
-      {experienceItems && (
+      {experienceItems.length > 0 && (
         <View style={styles.detailsSection}>
           <Text style={styles.sectionTitle}>PROFESSIONAL EXPERIENCE</Text>
           <View style={styles.sectionList}>
