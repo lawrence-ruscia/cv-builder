@@ -1,13 +1,12 @@
-.educationDetails {
+.experienceDetails {
   overflow: hidden;
 }
-
 .preview {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: var(--space-section); 
+  padding: var(--space-section);
   width: 100%;
 
   background-color: inherit;

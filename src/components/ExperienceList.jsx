@@ -1,51 +1,68 @@
-import styles from '../assets/styles/EducationList.module.css';
+import styles from '../assets/styles/ExperienceList.module.css';
 import { Plus } from 'lucide-react';
-import { EducationDetailsForm } from './forms/EducationDetailsForm';
+import { ExperienceDetailsForm } from './forms/ExperienceDetailsForm';
 import { useState } from 'react';
 
-export const EducationList = ({
+export const ExperienceList = ({
   isOpen,
   isFormOpen,
   handleIsFormOpen,
   handleIsFormClose,
-  educationItems,
-  setEducationItems,
+  experienceItems,
+  setExperienceItems,
 }) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
 
-  const selectedEducationItem = educationItems.find(
+  const selectedExperienceItem = experienceItems.find(
     (item) => item.id === selectedItemId
   );
 
-  const handleAddItem = ({ school, degree, startDate, endDate, location }) => {
-    setEducationItems([
-      ...educationItems,
+  const handleAddItem = ({
+    employer,
+    jobTitle,
+    startDate,
+    endDate,
+    location,
+    description,
+  }) => {
+    setExperienceItems([
+      ...experienceItems,
       {
         id: crypto.randomUUID(),
-        school,
-        degree,
+        employer,
+        jobTitle,
         startDate,
         endDate,
         location,
+        description,
       },
     ]);
   };
 
   const handleEditItem = ({
     id,
-    school,
-    degree,
+    employer,
+    jobTitle,
     startDate,
     endDate,
     location,
+    description,
   }) => {
-    const item = educationItems.find((item) => item.id === id);
+    const item = experienceItems.find((item) => item.id === id);
 
     if (item) {
-      setEducationItems((prevItems) =>
+      setExperienceItems((prevItems) =>
         prevItems.map((item) =>
           item.id === id
-            ? { ...item, school, degree, startDate, endDate, location }
+            ? {
+                ...item,
+                employer,
+                jobTitle,
+                startDate,
+                endDate,
+                location,
+                description,
+              }
             : item
         )
       );
@@ -60,23 +77,23 @@ export const EducationList = ({
   return (
     <>
       {isFormOpen ? (
-        <EducationDetailsForm
+        <ExperienceDetailsForm
           handleClose={() => {
             handleIsFormClose();
             setSelectedItemId(null);
           }}
           handleAddItem={handleAddItem}
           handleEditItem={handleEditItem}
-          selectedExperienceItem={selectedEducationItem}
+          selectedExperienceItem={selectedExperienceItem}
         />
       ) : (
         <ul
-          className={`${styles.educationList} ${
+          className={`${styles.experienceList} ${
             isOpen ? styles.openList : null
           }`}
         >
-          {educationItems.map((item) => (
-            <EducationItem
+          {experienceItems.map((item) => (
+            <ExperienceItem
               key={item.id}
               {...item}
               handleSelectedId={() => handleSelectedId(item.id)}
@@ -98,13 +115,13 @@ export const EducationList = ({
   );
 };
 
-const EducationItem = ({ school, degree, handleSelectedId }) => {
+const ExperienceItem = ({ employer, jobTitle, handleSelectedId }) => {
   return (
     <li className={styles.listItem} onClick={handleSelectedId}>
       <button className={styles.listBtn}>
-        <span className={styles.school}>{school}</span>
+        <span className={styles.employer}>{employer}</span>
         {', '}
-        <span className={styles.degree}>{degree}</span>
+        <span className={styles.jobTitle}>{jobTitle}</span>
       </button>
     </li>
   );

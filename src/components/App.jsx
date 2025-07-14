@@ -1,6 +1,5 @@
 import { NavMenu } from './NavMenu';
 import { Details } from './Details';
-import { Preview } from './Preview';
 import { useEffect, useState } from 'react';
 import { DocumentPreview } from './DocumentPreview';
 import { useBreakpoint } from '../hooks/useBreakpoint';
@@ -37,10 +36,24 @@ const educationMockData = [
   },
 ];
 
+const experienceMockData = [
+  {
+    id: crypto.randomUUID(),
+    employer: 'Google',
+    jobTitle: 'Senior Software Engineer',
+    startDate: '2022-01-01',
+    endDate: '2025-02-02',
+    location: 'Mountain View, Californa',
+    description:
+      'Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and Android',
+  },
+];
+
 function App() {
   const [isPreview, setIsPreview] = useState(false);
   const [personalDetails, setPersonalDetails] = useState(personalMockData);
   const [educationItems, setEducationItems] = useState(educationMockData);
+  const [experienceItems, setExperienceItems] = useState(experienceMockData);
   const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
 
   useEffect(() => {
@@ -85,6 +98,8 @@ function App() {
               handlePersonalDetails={handlePersonalDetails}
               educationItems={educationItems}
               setEducationItems={setEducationItems}
+              experienceItems={experienceItems}
+              setExperienceItems={setExperienceItems}
             />
             <DocumentPreviewWrapper pdfBlobUrl={pdfBlobUrl} />
           </>
@@ -98,6 +113,8 @@ function App() {
                 handlePersonalDetails={handlePersonalDetails}
                 educationItems={educationItems}
                 setEducationItems={setEducationItems}
+                experienceItems={experienceItems}
+                setExperienceItems={setExperienceItems}
               />
             )}
           </>

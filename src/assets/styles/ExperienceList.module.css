@@ -1,0 +1,56 @@
+.experienceList {
+  background-color: #fff;
+
+  margin: 0;
+  padding: 0;
+
+  max-height: 0;
+  overflow: hidden;
+
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.openList {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.add {
+  padding: var(--space-2);
+  padding-bottom: var(--space-3);
+}
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* List Item */
+.listItem {
+  width: 100%;
+  list-style-type: none;
+}
+
+.listBtn {
+  text-align: left;
+
+  width: 100%;
+  padding: var(--space-4);
+  background: var(--color-section-bg);
+  border-top: 1px solid var(--color-section-border);
+  border-bottom: 1px solid var(--color-section-border);
+}
+
+.employer {
+  font-weight: 700;
+}
+
+.jobTitle {
+  font-style: italic;
+}

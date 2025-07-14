@@ -1,6 +1,6 @@
 import { PersonalDetails } from './PersonalDetails';
 import { EducationDetails } from './EducationDetails';
-import { ProfessionalDetails } from './ProfessionalDetails';
+import { ExperienceDetails } from './ExperienceDetails';
 import styles from '../assets/styles/Details.module.css';
 import { useState } from 'react';
 export const Details = ({
@@ -8,6 +8,8 @@ export const Details = ({
   handlePersonalDetails,
   educationItems,
   setEducationItems,
+  experienceItems,
+  setExperienceItems,
 }) => {
   const [focusedIndex, setFocusedIndex] = useState(null);
 
@@ -30,9 +32,11 @@ export const Details = ({
         setEducationItems={setEducationItems}
       />
 
-      <ProfessionalDetails
-        isFocused={focusedIndex === 2}
-        handleSelectedFocus={handleSelectedFocus}
+      <ExperienceDetails
+        isOpen={focusedIndex === 2}
+        onToggle={() => handleSelectedFocus(2)}
+        experienceItems={experienceItems}
+        setExperienceItems={setExperienceItems}
       />
     </section>
   );
