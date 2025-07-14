@@ -15,11 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  --font-size-title-lg: clamp(1.25rem, 1.95vw, 2rem);
-  --font-size-title-sm: clamp(0.75rem, 1.25vw, 1.25rem);
-  --font-size-base: clamp(0.5rem, 1vw, 1.125rem);
-  --space-gap-sm: clamp(0.4rem, 0.9vw, 1rem);
 }
 
 .fullName {
