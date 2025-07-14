@@ -2,6 +2,7 @@ import styles from '../assets/styles/ExperienceDetails.module.css';
 import { useState } from 'react';
 import { Briefcase, ChevronDown } from 'lucide-react';
 import { ExperienceList } from './ExperienceList';
+import { useBreakpoint } from '../hooks/useBreakpoint';
 export const ExperienceDetails = ({
   isOpen,
   onToggle,
@@ -9,6 +10,7 @@ export const ExperienceDetails = ({
   setExperienceItems,
 }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const isTablet = useBreakpoint('(min-width: 768px)');
 
   const handleIsFormOpen = () => {
     setIsFormOpen(true);
@@ -23,7 +25,7 @@ export const ExperienceDetails = ({
       className={`details-section ${styles.experienceDetails} `}
     >
       {isFormOpen ? (
-        <p className={styles.formTitle}>Professinal Experience Details</p>
+        <p className={styles.formTitle}>Professional Experience Details</p>
       ) : (
         <button
           type='button'
@@ -32,7 +34,7 @@ export const ExperienceDetails = ({
         >
           <span className={styles.title}>
             <Briefcase />
-            <p>Professional Experience</p>
+            <p>{isTablet && 'Professional'} Experience</p>
           </span>
 
           <ChevronDown
