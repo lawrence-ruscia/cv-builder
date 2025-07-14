@@ -1,5 +1,6 @@
 import { Check, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 export const ExperienceDetailsForm = ({
   handleClose,
   handleAddItem,
@@ -15,6 +16,8 @@ export const ExperienceDetailsForm = ({
     location: '',
     description: '',
   });
+
+  const isTablet = useBreakpoint('(min-width: 768px)');
 
   useEffect(() => {
     if (selectedExperienceItem) {
@@ -148,7 +151,7 @@ export const ExperienceDetailsForm = ({
           onClick={() => handleDeleteItem(selectedExperienceItem.id)}
         >
           <Trash width={20} height={20} />
-          Delete
+          {isTablet && 'Delete'}
         </button>
         <div className='formOptionsInline'>
           <button

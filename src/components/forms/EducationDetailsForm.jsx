@@ -1,5 +1,6 @@
 import { Check, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 export const EducationDetailsForm = ({
   handleClose,
   handleAddItem,
@@ -12,8 +13,10 @@ export const EducationDetailsForm = ({
     degree: '',
     startDate: '',
     endDate: '',
-    location: '', 
+    location: '',
   });
+
+  const isTablet = useBreakpoint('(min-width: 768px)');
 
   useEffect(() => {
     if (selectedEducationItem) {
@@ -130,7 +133,7 @@ export const EducationDetailsForm = ({
           onClick={() => handleDeleteItem(selectedEducationItem.id)}
         >
           <Trash width={20} height={20} />
-          Delete
+          {isTablet && 'Delete'}
         </button>
         <div className='formOptionsInline'>
           <button

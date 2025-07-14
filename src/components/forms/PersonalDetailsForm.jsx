@@ -2,7 +2,7 @@ import styles from '../../assets/styles/forms/PersonalDetailsForm.module.css';
 import avatar from '../../assets/images/avatar-placeholder.svg';
 import { Eraser, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 export const PersonalDetailsForm = ({
   handleClose,
   handlePersonalDetails,
@@ -15,6 +15,8 @@ export const PersonalDetailsForm = ({
     phone: '',
     location: '',
   });
+
+  const isTablet = useBreakpoint('(min-width: 768px)');
 
   const handleInputData = (e, inputType) => {
     setFormData({ ...formData, [inputType]: e.target.value });
@@ -139,7 +141,7 @@ export const PersonalDetailsForm = ({
           onClick={handleFormReset}
         >
           <Eraser />
-          Clear Form
+          {isTablet && 'Clear Form'}
         </button>
         <div className='formOptionsInline'>
           <button
