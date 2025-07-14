@@ -89,6 +89,7 @@ function App() {
         <NavMenu
           isPreview={isPreview}
           handleTogglePreview={handleTogglePreview}
+          pdfBlobUrl={pdfBlobUrl}
         />
       </header>
       <main id='main'>
