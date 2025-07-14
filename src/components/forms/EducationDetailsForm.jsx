@@ -1,4 +1,3 @@
-import styles from '../../assets/styles/forms/EducationDetailsForm.module.css';
 import { Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 export const EducationDetailsForm = ({
