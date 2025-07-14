@@ -52,6 +52,16 @@ export const EducationList = ({
     }
   };
 
+  const handlDeleteItem = (id) => {
+    const item = educationItems.find((item) => item.id === id);
+    if (item) {
+      setEducationItems((prevItems) =>
+        prevItems.filter((item) => item.id !== id)
+      );
+      handleIsFormClose();
+    }
+  };
+
   const handleSelectedId = (id) => {
     setSelectedItemId(id);
     handleIsFormOpen(true);
@@ -67,6 +77,7 @@ export const EducationList = ({
           }}
           handleAddItem={handleAddItem}
           handleEditItem={handleEditItem}
+          handleDeleteItem={handlDeleteItem}
           selectedEducationItem={selectedEducationItem}
         />
       ) : (

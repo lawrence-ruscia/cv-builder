@@ -1,9 +1,10 @@
-import { Check } from 'lucide-react';
+import { Check, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
 export const EducationDetailsForm = ({
   handleClose,
   handleAddItem,
   handleEditItem,
+  handleDeleteItem,
   selectedEducationItem,
 }) => {
   const [formInputs, setFormInputs] = useState({
@@ -125,15 +126,25 @@ export const EducationDetailsForm = ({
       <div className='formOptions'>
         <button
           type='button'
-          className='formOptionsBtn btn-md outline-btn'
-          onClick={handleClose}
+          className='formOptionsBtn btn-md delete-btn'
+          onClick={() => handleDeleteItem(selectedEducationItem.id)}
         >
-          Cancel
+          <Trash width={20} height={20} />
+          Delete
         </button>
-        <button type='submit' className='formOptionsBtn btn-md primary-btn'>
-          <Check />
-          Save
-        </button>
+        <div className='formOptionsInline'>
+          <button
+            type='button'
+            className='formOptionsBtn btn-md outline-btn'
+            onClick={handleClose}
+          >
+            Cancel
+          </button>
+          <button type='submit' className='formOptionsBtn btn-md primary-btn'>
+            <Check />
+            Save
+          </button>
+        </div>
       </div>
     </form>
   );
