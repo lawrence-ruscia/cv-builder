@@ -69,6 +69,16 @@ export const ExperienceList = ({
     }
   };
 
+  const handleDeleteItem = (id) => {
+    const item = experienceItems.find((item) => item.id === id);
+    if (item) {
+      setExperienceItems((prevItems) =>
+        prevItems.filter((item) => item.id !== id)
+      );
+      handleIsFormClose();
+    }
+  };
+
   const handleSelectedId = (id) => {
     setSelectedItemId(id);
     handleIsFormOpen(true);
@@ -84,6 +94,7 @@ export const ExperienceList = ({
           }}
           handleAddItem={handleAddItem}
           handleEditItem={handleEditItem}
+          handleDeleteItem={handleDeleteItem}
           selectedExperienceItem={selectedExperienceItem}
         />
       ) : (

@@ -52,7 +52,7 @@ export const EducationList = ({
     }
   };
 
-  const handlDeleteItem = (id) => {
+  const handleDeleteItem = (id) => {
     const item = educationItems.find((item) => item.id === id);
     if (item) {
       setEducationItems((prevItems) =>
@@ -77,7 +77,7 @@ export const EducationList = ({
           }}
           handleAddItem={handleAddItem}
           handleEditItem={handleEditItem}
-          handleDeleteItem={handlDeleteItem}
+          handleDeleteItem={handleDeleteItem}
           selectedEducationItem={selectedEducationItem}
         />
       ) : (

@@ -12,7 +12,7 @@ export const EducationDetailsForm = ({
     degree: '',
     startDate: '',
     endDate: '',
-    location: '',
+    location: '', 
   });
 
   useEffect(() => {
