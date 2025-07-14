@@ -23,6 +23,8 @@ A responsive CV builder app demonstrating controlled components, live state sync
 
 ## Demo
 
+👉 **[Live Preview on Vercel](https://renz-cv-builder.vercel.app/)**
+
 ### Desktop View
 
 ![Desktop Preview Screenshot](./public/cv-builder-preview.png)
